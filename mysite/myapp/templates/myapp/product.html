@@ -1,0 +1,16 @@
+{% load static %}
+<html>
+    <head>
+        <link rel="stylesheet" href="{% static 'myapp/style.css' %}">
+    <head/>
+    
+    <body>
+        <h1> !product! </h1>
+        <h3> {% for prod in items %} </h3>
+        <a href="{% url 'myapp:details' prod.id %}">
+        ID: {{prod.id}} | Имя: {{prod.name}}<br/>
+        </a>
+        {% endfor %} 
+    </body>
+    
+</html>
