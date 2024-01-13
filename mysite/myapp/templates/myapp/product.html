@@ -1,16 +1,29 @@
 {% load static %}
 <html>
-    <head>
-        <link rel="stylesheet" href="{% static 'myapp/styles.css' %}">
-    <head/>
-    
-    <body class="bg-sky-500">
-        <h1> !product! </h1>
-        <h3> {% for prod in items %} </h3>
-        <a href="{% url 'myapp:details' prod.id %}">
-        ID: {{prod.id}} | Имя: {{prod.name}}<br/>
-        </a>
-        {% endfor %} 
-    </body>
+  <head>
+    <link rel="stylesheet" href="{% static 'myapp/styles.css' %}">
+  <head/>
+  
+  <body class="bg-sky-500">
+    <nav>
+      <div>
+        <div>
+          <div>
+            <div class="flex">
+              <img class="h-20 w-20" src="{% static 'myapp/images/sex_shop_icon.png' %}" alt="sex_logo">
+              <span class="text-5xl"> PorcheOFFShop </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <h1> !product! </h1>
+    <h4> {% for prod in items %} 
+      <a href="{% url 'myapp:details' prod.id %}">
+      ID: {{prod.id}} | Имя: {{prod.name}} <br/>
+      </a>
+      {% endfor %}
+    </h4> 
+  </body>
     
 </html>
