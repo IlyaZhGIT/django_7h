@@ -7,6 +7,7 @@
 <h4> {% for prod in items %} 
   <a href="{% url 'myapp:details' prod.id %}">
   ID: {{prod.id}} | Имя: {{prod.name}} <br/>
+  <img src="{{prod.image.url}}" alt="XYI"> 
   </a>
   {% endfor %}
 </h4> 
