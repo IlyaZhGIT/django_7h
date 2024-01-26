@@ -27,7 +27,10 @@ def additem(request):
         price = request.POST.get("price")
         description = request.POST.get("description")
         image = request.FILES["upload"]
-        item = Product(name=name, price=price, description=description, image=image)
+        seller = request.user
+        item = Product(
+            name=name, price=price, description=description, image=image, seller=seller
+        )
         item.save()
     return render(request, "myapp/additem.html")
 

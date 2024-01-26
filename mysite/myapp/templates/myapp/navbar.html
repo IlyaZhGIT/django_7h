@@ -11,8 +11,7 @@
           </div>
           <div class="items-center flex space-x-1">
             <a href="{% url "myapp:products" %}" class="py-4 px-2 text-gray-500 font-semibold border-b-4 border-green-500">Home</a>
-            <a href="#" class="px-2 py-4 text-gray-500 font-semibold">About</a>
-            <a href="#" class="px-2 py-4 text-gray-500 font-semibold">Contacts<a>
+            <a href="{% url "myapp:additem" %}" class="py-4 px-2 text-gray-500 font-semibold border-b-4 border-green-500">Add item</a>            <a href="#" class="px-2 py-4 text-gray-500 font-semibold">Contacts<a>
             {% if user.is_authenticated %}
               <a href=" {% url "users:logout" %} " class="px-2 py-4 text-gray-500 font-semibold">Logout<a>
               <a href=" {% url "users:profile" %} " class="px-2 py-4 text-gray-500 font-semibold">Profile<a>

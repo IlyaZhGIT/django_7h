@@ -7,6 +7,10 @@
 		<div class="w-2/3 text-xl ml-10 mt-5">
 			<p class="mt-5">{{ item.name }}</p>
 			<p class="mt-5 text-green-500">$ {{ item.price | intcomma }}</p>
+			<p class="mt-5 text-gray-600">
+				<a href="{% url 'users:sellerprofile' item.seller.id %}">@{{ item.seller }}</a>
+			</p>
+			<p class="mt-4 text-indigo-500">contact: {{ item.seller.profile.contact_number }} </p>
 			<p class="mt-5 text-gray-600">{{ item.description }}</p>
         </div>
     </div>
