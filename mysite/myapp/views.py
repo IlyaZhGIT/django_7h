@@ -1,6 +1,8 @@
 from importlib.resources import contents
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from django.contrib.auth.decorators import login_required
+
 
 from .models import Product
 
@@ -18,6 +20,7 @@ def product_id(request, my_id):
     return render(request, "myapp/detail.html", context=context)
 
 
+@login_required
 def additem(request):
     if request.method == "POST":
         name = request.POST.get("name")
@@ -29,6 +32,7 @@ def additem(request):
     return render(request, "myapp/additem.html")
 
 
+@login_required
 def updateitem(request, my_id):
     item = Product.objects.get(id=my_id)
     if request.method == "POST":
@@ -42,6 +46,7 @@ def updateitem(request, my_id):
     return render(request, "myapp/updateitem.html", context=context)
 
 
+@login_required
 def deleteitem(request, my_id):
     item = Product.objects.get(id=my_id)
     if request.method == "POST":

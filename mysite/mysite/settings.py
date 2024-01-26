@@ -15,6 +15,7 @@ from pathlib import Path
 
 from django.conf.global_settings import (
     LOGIN_REDIRECT_URL,
+    LOGIN_URL,
     LOGOUT_REDIRECT_URL,
     MEDIA_ROOT,
     MEDIA_URL,
@@ -139,4 +140,5 @@ MEDIA_ROOT = BASE_DIR / "media"
 MEDIA_URL = "/media/"
 
 LOGIN_REDIRECT_URL = "myapp:products"
-# LOGOUT_REDIRECT_URL: Literal[''] = "myapp:products"
+LOGOUT_REDIRECT_URL = "myapp:products"
+LOGIN_URL = "users:login"
