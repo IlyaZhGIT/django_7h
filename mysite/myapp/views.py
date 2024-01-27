@@ -3,21 +3,32 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.views.generic import ListView, DetailView, DeleteView
 from django.urls import reverse_lazy
+from django.core.paginator import Paginator
 
 from .models import Product
 
 
 # Create your views here.
-# def products(request):
-#     items = Product.objects.all()
-#     context = {"items": items}
-#     return render(request, "myapp/products.html", context)
+def products(request):
+    page_object = items = Product.objects.all()
+
+    item_name = request.GET.get("search")
+    if item_name != "" and item_name is not None:
+        page_object = items.filter(name__icontains=item_name)
+
+    paginator = Paginator(page_object, 3)
+    page_number = request.GET.get("page")
+    page_object = paginator.get_page(page_number)
+
+    context = {"page_obj": page_object}
+    return render(request, "myapp/products.html", context)
 
 
-class ProductListView(ListView):
-    model = Product
-    template_name = "myapp/products.html"
-    context_object_name = "items"
+# class ProductListView(ListView):
+#     model = Product
+#     template_name = "myapp/products.html"
+#     context_object_name = "items"
+#     paginate_by = 3
 
 
 # def product_id(request, my_id):
