@@ -12,4 +12,11 @@ urlpatterns = [
     path("additem/", additem, name="additem"),
     path("updateitem/<int:my_id>/", updateitem, name="updateitem"),
     path("deleteitem/<int:pk>/", DeleteItem.as_view(), name="deleteitem"),
+    path("payment_success/<int:pk>/", PaymentSuccessView.as_view(), name="success"),
+    path("payment_failed/<int:pk>/", PaymentFailedView.as_view(), name="failed"),
+    path(
+        "api/checkout-session/<int:id>/",
+        create_checkout_session,
+        name="api_checkout-session",
+    ),
 ]
